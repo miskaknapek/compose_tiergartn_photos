@@ -13,9 +13,19 @@ TO DO ?
 2_- remember that the image object is closed once loaded... otherwise PIL tells me too many images are open at once…
 
 
+2022.10.03
+1. Parsing dates : 
+	parsed dates = datetime.datetime.strptime( date, '%Y:%m:%d %H:%M:%S' )
 
+2. parsin exif tages : 
+		from PIL import ExifTags
 
-
+		exifData = {}
+		img = Image.open(picture.jpg)
+		exifDataRaw = img._getexif()
+		for tag, value in exifDataRaw.items():
+		    decodedTag = ExifTags.TAGS.get(tag, tag)
+		    exifData[decodedTag] = value
 
 
 
