@@ -230,8 +230,10 @@ def sayHello():
 ------------------------------- RUN RUN RUN ---------------------------
 """
 
-# variable 
+# variable - osx 
 images_url = "/Users/miska/Desktop/onpeplus_photos_dl"
+# windwos
+images_url = "/mnt/c/Users/stupi/Pictures/photos_for_health/export5_favourites/6stars"
 
 # test
 sayHello()
