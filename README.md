@@ -15,11 +15,16 @@ possible outputs :
 
 
 given dimensions???
-x - what are the variables one can act on the image slices with?
 ------
+- what are the variables one can act on the image slices with?
+
 
 
 low resolition output?
-- how?
 ------
+- how?
+-- low resolution output calculation?
+-- low resolution input?
+- - - how, low res input?
+- - - - given that reading low resolution pngs could take a bit of time… 
 
