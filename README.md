@@ -96,6 +96,6 @@ rough : questions :
   * does one indicate on the object when to do it... and calculations are done when copy-pasting? 
     * but then it would be difficult to get the final coords, for figuring out the out canvas size....
     * maaaaybe best to do the coords things at once.
-     * BUUUUT .... how does the object know which steps to do? --- make a languge?
-     * eg. DEPENDS ON WHAT THE OUT IMAGE THING SHOULD BE ... eg fixed width or height, or fixed height and width....
-     * likely, input : crop X aspect ratio, save coords for cropping, paste WIDTH/HEIGHT size, ie save output size. save absolute paste coordinates.
+      * BUUUUT .... how does the object know which steps to do? --- make a languge?
+      * eg. DEPENDS ON WHAT THE OUT IMAGE THING SHOULD BE ... eg fixed width or height, or fixed height and width....
+      * likely, input : crop X aspect ratio, save coords for cropping, paste WIDTH/HEIGHT size, ie save output size. save absolute paste coordinates.
