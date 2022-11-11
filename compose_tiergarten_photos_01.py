@@ -43,6 +43,25 @@ import time
 
 from PIL import Image 
 
+
+
+"""
+vars  
+"""
+
+
+# variable - osx 
+images_url_OSX_1 = "/Users/miska/Desktop/onpeplus_photos_dl"
+# old mac 
+images_url_OSX_2 = "/Users/miska/Desktop/to_backups/oneplus_5t_since_20211216/favourites/4stars/6stars"
+# windwos
+images_url_WINDOWS = "/mnt/c/Users/stupi/Pictures/photos_for_health/export5_favourites/6stars"
+
+## and this is what we're using 
+curr_file_url = images_url_OSX_2
+
+
+
 """
 code?  --------------------------------------------------
 """
@@ -230,10 +249,6 @@ def sayHello():
 ------------------------------- RUN RUN RUN ---------------------------
 """
 
-# variable - osx 
-images_url = "/Users/miska/Desktop/onpeplus_photos_dl"
-# windwos
-images_url = "/mnt/c/Users/stupi/Pictures/photos_for_health/export5_favourites/6stars"
 
 # test
 sayHello()
@@ -243,11 +258,11 @@ sayHello()
 # make_test_image_class_and_print_values()
 
 
-make_imge_objects_of_all_images_in_given_folder( images_url )
+make_imge_objects_of_all_images_in_given_folder( curr_file_url )
 
 
 # let's try making an array of 
-make_image_object_HOLDER__ONE = make_image_object_HOLDER_of_given_url( images_url )
+make_image_object_HOLDER__ONE = make_image_object_HOLDER_of_given_url( curr_file_url )
 
 
 
