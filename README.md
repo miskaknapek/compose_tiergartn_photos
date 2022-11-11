@@ -53,6 +53,10 @@ make a cut+paste motor for images?
 -- crop : all or some
 --- besides fitting images to standard widths/heights, one could crop images to makes sure all the output slices have the same width/height. But then the cropping function needs to be a bit intelligent, to make sure one, eg., gets the middle of the image rather than just some rectangle starting in the top left corner.
 
+- try 2:
+-- cropping mode : 1. whole image? 2. aspect constrained center? 3. 
+
+
 
 low resolition output?
 ------
@@ -68,3 +72,30 @@ to do
 ------
 - image cropping funciton that gets eg the middle of the image, in a particular aspect ratio…)
 - function : find the number of images within a given time range, of different groups of images. give the min/max number of relevant images per group of images.
+- function : gather statistics relevant to cropping images for a certain output size or aspect ratio.
+-- OR DIFFERENTLY : if you want a given aspect ratio crop of images, some images might require that one doesn't get the whole width/height of an image, but needs to crop it further within, to get the right proportions. MAYBE one could have a function to check what images don't satisfy the aspect ratio cropping, or what the relevant max/mind dimensions are.
+
+
+rough : SOOOO.... (rough mental sketch)
+-----
+- to take a quick example of the steps for handling single images when just posting a row of images.
+-- make a new array of out image objects
+-- for each planned out image : 
+--- prepare the coordinates for cropping, resizing, etc… in an object
+---- add the relevant image object to the positioning object ( or just the path? ) to the abovementioned object
+---- add geometry+path object to the out image objects array
+- to get out image : 
+( calculate out canvas size, from the various image coordinates… make out canvas of relevant size )
+- do the geometry manipulation + paste operation 
+- get out image
+
+
+rough : questions : 
+-----
+- when to do geometric manipulation?
+-- does one indicate on the object when to do it... and calculations are done when copy-pasting? 
+---- but then it would be difficult to get the final coords, for figuring out the out canvas size....
+---- maaaaybe best to do the coords things at once.
+----- BUUUUT .... how does the object know which steps to do? --- make a languge?
+------ eg. DEPENDS ON WHAT THE OUT IMAGE THING SHOULD BE ... eg fixed width or height, or fixed height and width....
+------ likely, input : crop X aspect ratio, save coords for cropping, paste WIDTH/HEIGHT size, ie save output size. save absolute paste coordinates.
