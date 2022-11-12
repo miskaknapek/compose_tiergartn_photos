@@ -107,9 +107,40 @@ rough : questions :
 
   - basically, at the end, a cut+paste engine will need to paste something at given coordinates. 
   maybe that would be the natural place to start thinking, in regards to what's needed to amke something that works.
-  - pseudo code : 
+  
+  - pseudo code for simmple cut+paste: 
   for copy_paste_metadata_item in list_of_copy_paste_metadata_objects:
     load_image()
     copy_relevant_image_region from coords in copy_paste_metadata_item.
     transform()
     paste copied regions into specified outcanvas area in copy_paste_metadata_item
+
+- and what if we take things a bit further, introduce transforamtions?
+how introduce transformations?
+- do we give the cut+paste function some parsing abilities, to send asks for functions and arguments?
+- do we simply run a high level function that does what we want. ie not so much modularity . 
+
+pseudo code for both : 
+
+pseudo code for precalculated coords
+  for copy_paste_metadata_item in list_of_copy_paste_metadata_objects:
+    load_image()
+    if operations.copy_central_region == true:
+      - copy given image region
+    paste relevant image region to output coords.
+
+
+pseudo code for some high level functionality in code
+  for copy_paste_metadata_item in list_of_copy_paste_metadata_objects:
+    load_image()
+    if operations.copy_central_region == true:
+
+
+
+#### IMPORTANT NOTE : either the coordinates calculation happens in the pre-calculations section, or it happens when the final cutting+pasting is done.
+if the coordinate calculations are done in the pre-calculation stage, then the cut+paste stage is basically just copyying image regions from the in-image and pasting them into the out image.
+
+
+## Random notes : 
+
+- if the output coordinates are precalculated, then scaling images can happen really quite quickly.
