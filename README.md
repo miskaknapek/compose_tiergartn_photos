@@ -99,3 +99,17 @@ rough : questions :
       * BUUUUT .... how does the object know which steps to do? --- make a languge?
       * eg. DEPENDS ON WHAT THE OUT IMAGE THING SHOULD BE ... eg fixed width or height, or fixed height and width....
       * likely, input : crop X aspect ratio, save coords for cropping, paste WIDTH/HEIGHT size, ie save output size. save absolute paste coordinates.
+
+
+
+  rough : another rough skecth of how things work : 
+  -----
+
+  - basically, at the end, a cut+paste engine will need to paste something at given coordinates. 
+  maybe that would be the natural place to start thinking, in regards to what's needed to amke something that works.
+  - pseudo code : 
+  for copy_paste_metadata_item in list_of_copy_paste_metadata_objects:
+    load_image()
+    copy_relevant_image_region from coords in copy_paste_metadata_item.
+    transform()
+    paste copied regions into specified outcanvas area in copy_paste_metadata_item
