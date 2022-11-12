@@ -133,7 +133,15 @@ pseudo code for precalculated coords
 pseudo code for some high level functionality in code
   for copy_paste_metadata_item in list_of_copy_paste_metadata_objects:
     load_image()
-    if operations.copy_central_region == true:
+    for desired_image_operation in copy_paste_metadata_item.list_of_operations:
+      // does desired operation and returns the output to relevant persistent variable, so one has access to variables that persist over several operations
+      array_of_operation_functions[ desired_image_operation.operation ]( desired_image_operation.arguments )
+
+
+now, what does pre-processing look like?
+-----
+- where we establish the coordinates of things to cut+paste?
+- ( note, eg if we have different groups/blocks of images that are supposed to make up a cohesive whole, the coords generating function needs to knew where the previous function left off, so it knows where to continue. maybe some persistent object variables can be used for that... or at least some starting poitn variables should be around :)
 
 
 
@@ -144,3 +152,4 @@ if the coordinate calculations are done in the pre-calculation stage, then the c
 ## Random notes : 
 
 - if the output coordinates are precalculated, then scaling images can happen really quite quickly.
+could perhaps make cut+paste work a bit quicker.
