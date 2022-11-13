@@ -153,3 +153,26 @@ if the coordinate calculations are done in the pre-calculation stage, then the c
 
 - if the output coordinates are precalculated, then scaling images can happen really quite quickly.
 could perhaps make cut+paste work a bit quicker.
+
+
+### Python Image Library reference notes … 
+reference : https://pillow.readthedocs.io/en/stable/handbook/tutorial.html 
+
+##### copy
+Copying a subrectangle from an image
+box = (100, 100, 400, 400)
+region = im.crop(box)
+
+##### paste
+Processing a subrectangle, and pasting it back
+region = region.transpose(Image.Transpose.ROTATE_180)
+im.paste(region, box)
+
+
+##### cutting+pasting image
+( *note* the copy/paste regions need to be the same size )
+
+##### resizing image
+Simple geometry transforms
+out = im.resize((128, 128))
+out = im.rotate(45) # degrees counter-clockwise
