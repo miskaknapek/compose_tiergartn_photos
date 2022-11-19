@@ -144,6 +144,69 @@ now, what does pre-processing look like?
 - ( note, eg if we have different groups/blocks of images that are supposed to make up a cohesive whole, the coords generating function needs to knew where the previous function left off, so it knows where to continue. maybe some persistent object variables can be used for that... or at least some starting poitn variables should be around :)
 
 
+try 2 : what does a code structure look like?
+-----
+
+
+¿pre-analyses - number of images per group??
+  * does one do a pre-analysis to figure out 
+  how many the max/min images per group time-range are?
+    * knowing this one can set the number of images per group
+    to be the same
+
+¿ When do we rotate images?
+  * ie if images are horizontal rather than vertical?
+    * rotate images + resave?
+    * add a flag to check which orientation images have, and then rotate if needed?
+      * could be a bit more space efficient like this, while adding complexity in code
+
+version A:
+  * set parameters:
+    * define image groups and their settings
+      * ie how each image is handled (cropping, output size)
+      * does the group continue after the previous grup, or eg
+      start on a new line?
+      * does the image break at the edge of the canvas?
+      * how many images per group?
+        * how are images selected?
+
+    * calculate coordinates : 
+      * go group by group:
+        * figure out strating point
+        * go image by image :
+          * check if one is at the last image
+          * DEPENDING ON COPY/PASTE MODE:
+            * IF fixed width/height:
+              * eg fixed height : final_width = (height/final_height)*width
+              * add that the image should be resized
+              * save image slice out size (for the next steps)
+            * IF fixed width *and* height:
+              * do given crop-mode (usually centered)
+                * find vertical middle -> (height/2)
+                * get relevant height of copy region, given out image size:
+                  * final_copy_height = (ideal_out_width/ideal_height)xthis_image_width)
+                  * half_final_height = final_height/2
+                  * final_top coord = vertical_centre - half_final_height
+                  * final_bottom coord = final_top_coord + final_copy_height
+                  * save relevant copy coords
+                * (copy region?)                
+                * resize copied region to final image slice size
+                * save image slice out size (for the next steps)
+          // these steps will be the same in any event 
+          * figure out final out coords:
+            * eg look at the left position of the previous out image
+            * CHECK IF THE IMAGE WILL FIT THE DESIGNATED CANVAS SIZE
+          and put it on the next row, if it doesn't.
+          * save all these operations and settings in an out-image-metadata-object, in a relevant array                        
+
+
+
+
+- once final coords have been 
+
+¿ 
+
+
 
 #### IMPORTANT NOTE : either the coordinates calculation happens in the pre-calculations section, or it happens when the final cutting+pasting is done.
 if the coordinate calculations are done in the pre-calculation stage, then the cut+paste stage is basically just copyying image regions from the in-image and pasting them into the out image.
@@ -153,6 +216,12 @@ if the coordinate calculations are done in the pre-calculation stage, then the c
 
 - if the output coordinates are precalculated, then scaling images can happen really quite quickly.
 could perhaps make cut+paste work a bit quicker.
+
+- the copy/paste function doesn't automatically resize an image, a resize function is needed for that.
+-- so it's good to check, in the serial copy-pasting, whether the input/ouput sizes are the same, and use the resize function if  needed.
+
+
+? does one do copy/paste/resize in precalculation or cutting=pasting, when there's a separate resize step needed?
 
 
 ### Python Image Library reference notes … 
@@ -175,4 +244,13 @@ im.paste(region, box)
 ##### resizing image
 Simple geometry transforms
 out = im.resize((128, 128))
-out = im.rotate(45) # degrees counter-clockwise
+out = im.rotate(45) # degrees counter-clockwise]
+
+
+##### rectangle drawing
+ImageDraw.rectangle(xy, fill=None, outline=None, width=1)[source]
+
+
+##### polygon drawing
+sourcce : https://pillow.readthedocs.io/en/stable/reference/ImageDraw.html
+ImageDraw.regular_polygon(bounding_circle, n_sides, rotation=0, fill=None, outline=None)[source]

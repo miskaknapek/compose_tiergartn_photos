@@ -1,5 +1,21 @@
 
 
+
+"""
+
+ideas: ...
+
+- many in the readme. 
+- - but basically :
+	- composition groups ( ie an GROUP_for_image_composition instance ) describes which images to use in a group how the images are to be processed.
+	-- ????? IF A TIME-SPAN IS INDICATED, THEN WHO FIGURES OUT HOW MANY IMAGES FIT IN THE TIME SPANS? ETC? WE NEED A FUNCTION FOR THAT SOMEWHERE? --->>> GROUP HOLDER??? 
+	- groups holder : holds the different groups for a composition + some meta data (ie overall image size, scaling, whether to render with real images or do a mockup for rendering …)
+	- the precalc engine figures out the varous cut+paste operations and relevant coordinates needed for each image in each group
+	- the composition engine does the cut+pasting …and final output 
+
+"""
+
+
 """
 TO DO ? 
 --------
@@ -33,8 +49,9 @@ TO DO ?
 
 
 
+
 """
-importss  --------------------------------------------------
+imports  --------------------------------------------------
 """
 
 import os
@@ -66,6 +83,83 @@ curr_file_url = images_url_OSX_2
 code?  --------------------------------------------------
 """
 
+
+
+class GROUP_for_image_composition:
+
+	# ---------- parameters
+	# who am i?
+	my_name_is = "my name is GROUP_for_image_composition"
+
+	# --- geometry 
+
+	# do we start where the last image left off
+	group_start_COORDS_from_previous_image = False
+	# and if not, ie that we set the start coords manually 
+	group_start_COORDS__LEFT = 0
+	group_start_COORDS__TOP = 0
+
+	# --- TEMP COORDS
+
+	# - maybe these won't be needed, but just in case…
+	# - - in any event, these are where the previous image in the loop had its coordinates, set to make it easier for the next loop image to know wheere to go 
+	last_image_LEFT = 0
+	last_image_RIGHT = 0
+	last_image_TOP = 0
+	last_image_BOTTOM = 0
+
+	last_image_WIDTH = 0
+	last_image_HEIGHT = 0
+
+
+	# --- out image size
+
+
+	output_size__SET_WIDTH = "output_size__SET_WIDTH"
+	output_size__SET_HEIGHT = "output_size__SET_HEIGHT"
+	# - if choosing this, then the code will need some help deciding how to crop the image
+	output_size__SET_HEIGHT_AND_HEIGHT = "output_size__SET_HEIGHT_AND_HEIGHT"
+
+	# and what are we using?
+	output_size__CURRENT = "output_size__SET_HEIGHT"
+
+	# --- image cropping 
+
+	# MAYBE THIS WILL be apparenty once one asks for a certain aspect ratio of the iamge 
+	image_cropping__NONE = "image_cropping__NONE"
+	image_cropping__MIDDLE = "image_cropping__MIDDLE"
+
+	# --- 
+
+
+	# ---- images in this group?
+	group_images = []
+
+
+	# ---------- initialise 
+
+	def __init__( self ):
+		print("\n- initialising GROUP_for_image_composition");
+		print("\n\t the GROUP holds meta data about how they are to be processed, and the images that are supposed to be in the group, etc ")
+		#
+		#
+
+
+
+		#
+		#
+		self.run_me()
+
+
+	# ---------- various functions 
+
+	def run_me( self ):
+		print("\n >>> GROUP_for_image_composition : runme() ")
+		print("\n\t - my_name_is is : "+str( self.my_name_is ))
+
+
+
+# ------- image object holder v 0 
 
 
 class Image_object_HOLDER:
