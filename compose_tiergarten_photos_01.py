@@ -84,6 +84,30 @@ code?  --------------------------------------------------
 """
 
 
+"""
+------------------ groups composition engine/object  - - - 
+- does the cutting+pasting
+"""
+
+
+
+"""
+------------------ groups preprocessor  - - - 
+- calculcate operations and coordinates (and outer canvas size?)
+"""
+
+
+
+"""
+------------------ group holder object  - - - 
+"""
+
+"""
+ ------------------ image composotion group - - - 
+- a compositin may have one or more such
+- maybe some image selection based on time happens somewhere
+- gets fed into the geometric precalc module, to figure out the various coords and operations, before things are fed to the composition engine
+"""
 
 class GROUP_for_image_composition:
 
